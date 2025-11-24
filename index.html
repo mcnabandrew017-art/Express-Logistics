@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Express Logistics — Your Cargo. Our Commitment.</title>
+<meta name="description" content="Express Logistics — Fast, reliable Free State freight and same-day deliveries. Get a quote or WhatsApp us." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --deep-blue:#0b3a66; /* brand deep blue */
+    --accent:#0a2b4a;
+    --muted:#6b7280;
+    --radius:14px;
+    --card-shadow: 0 10px 30px rgba(10,20,40,0.08);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    color:#0b1720;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+  a { color: inherit; text-decoration: none; }
+  header{ padding:28px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; position:sticky; top:0; background:rgba(255,255,255,0.7); backdrop-filter: blur(6px); z-index:50; border-bottom:1px solid rgba(10,20,40,0.04) }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .logo{
+    width:56px; height:56px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(180deg,var(--deep-blue), var(--accent)); color:white; font-weight:800; font-size:18px;
+    box-shadow: 0 6px 18px rgba(11,58,102,0.18);
+  }
+  .nav { display:flex; gap:14px; align-items:center; }
+  .btn { padding:10px 16px; border-radius:10px; font-weight:600; cursor:pointer; border:0; background:var(--deep-blue); color:white; box-shadow: 0 8px 24px rgba(11,58,102,0.12) }
+  .btn.ghost{ background:transparent; color:var(--deep-blue); border:1px solid rgba(11,58,102,0.08) }
+  main{ padding:36px 40px; max-width:1200px; margin:0 auto; }
+  .hero{
+    display:grid; grid-template-columns: 1fr 460px; gap:28px; align-items:center; margin-top:18px;
+  }
+  .hero-card{ padding:36px; border-radius:18px; background: linear-gradient(180deg, rgba(255,255,255,0.9), #ffffff); box-shadow:var(--card-shadow); }
+  .h-title{ font-size:34px; margin:0 0 12px; font-weight:800; color:var(--deep-blue); letter-spacing:-0.02em }
+  .h-sub{ color:var(--muted); margin-bottom:18px; }
+  .cta-row{ display:flex; gap:12px; margin-top:18px; }
+  .cta-row .btn.whatsapp{ background:#25D366; color:white; box-shadow:none; }
+  .hero-image{
+    border-radius:18px; overflow:hidden; position:relative; height:360px;
+    display:flex; align-items:center; justify-content:center; background:#eaf3ff; border:1px solid rgba(10,20,40,0.03);
+  }
+  .hero-image img{ width:100%; height:100%; object-fit:cover; display:block; }
+  /* Services */
+  .services{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:28px; }
+  .service-card{ background:white; padding:20px; border-radius:14px; box-shadow:var(--card-shadow); }
+  .service-card h4{ margin:0 0 6px; color:var(--deep-blue); }
+  .muted{ color:var(--muted); font-size:15px; }
+  /* Map & Why choose us */
+  .two-col{ display:grid; grid-template-columns: 1fr 420px; gap:18px; margin-top:28px; align-items:start; }
+  .map-card{ padding:22px; border-radius:14px; background:white; box-shadow:var(--card-shadow); }
+  .why-row{ display:flex; flex-direction:column; gap:12px; }
+  .icon-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .icon-box{ display:flex; gap:12px; align-items:center; padding:12px 14px; background:#f7fbff; border-radius:12px; min-width:180px }
+  .icon{ width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:var(--deep-blue); color:white; font-weight:700 }
+  /* Quick quote form */
+  .quote{ padding:18px; border-radius:12px; background:linear-gradient(180deg,#ffffff,#f7fbff); box-shadow:var(--card-shadow) }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:12px }
+  label{ font-size:13px; color:var(--muted) }
+  input, select, textarea{ padding:12px 14px; border-radius:10px; border:1px solid rgba(10,20,40,0.06); font-size:14px; outline:none }
+  textarea{ min-height:84px; resize:vertical }
+  /* Fleet */
+  .fleet{ display:flex; gap:12px; margin-top:18px; }
+  .fleet-card{ flex:1; padding:18px; border-radius:14px; background:white; box-shadow:var(--card-shadow); display:flex; gap:12px; align-items:center }
+  .truck-img{ width:120px; height:72px; border-radius:10px; background:#eef6ff; display:flex; align-items:center; justify-content:center; }
+  .truck-type{ font-weight:700; color:var(--deep-blue) }
+  /* Testimonials */
+  .testimonials{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:18px; }
+  .test-card{ padding:16px; border-radius:12px; background:white; box-shadow:var(--card-shadow); color:var(--muted) }
+  /* Footer */
+  footer{ margin-top:36px; padding:28px 40px; background:linear-gradient(180deg,#f8fbff,#eef6ff); border-top:1px solid rgba(10,20,40,0.03) }
+  .footer-grid{ max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+  .small{ font-size:13px; color:var(--muted) }
+  /* Responsive */
+  @media (max-width:960px){
+    .hero{ grid-template-columns: 1fr; }
+    .two-col{ grid-template-columns: 1fr; }
+    header{ padding:16px 20px }
+    main{ padding:20px }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">EL</div>
+    <div>
+      <div style="font-weight:800;color:var(--deep-blue)">Express Logistics</div>
+      <div class="small">Free State • Fast • Reliable</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a class="small" href="#services">Services</a>
+    <a class="small" href="#fleet">Fleet</a>
+    <a class="small" href="#contact">Contact</a>
+    <a class="btn" href="#quote">Get a Quote</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <h1 class="h-title">Your Cargo. Our Commitment.</h1>
+      <p class="h-sub">Premium, fast and personal logistics across the Free State — and national reach on request. Ideal for small businesses, suppliers and warehouses.</p>
+
+      <div style="display:flex; gap:14px; align-items:center; margin-top:12px;">
+        <button class="btn" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+        <a class="btn whatsapp" href="https://wa.me/27730380665" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+
+      <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;">
+        <div class="small">📍 Specialist in Free State routes</div>
+        <div class="small">⏱️ Reliable & on-time</div>
+        <div class="small">📦 Tailored logistics solutions</div>
+      </div>
+    </div>
+
+    <div class="hero-image" aria-hidden="true">
+      <!-- Replace /images/truck-hero.jpg with your photo -->
+      <img src="images/truck-hero.jpg" alt="Truck on Free State road — Welkom area" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22480%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23eaf3ff%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2230%22 fill=%22%230b3a66%22>Truck image placeholder</text></svg>'">
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="margin-top:26px">
+    <h3 style="margin:0 0 8px; color:var(--deep-blue)">What We Offer</h3>
+    <p class="muted" style="margin:0 0 14px">Rounded cards, clear services — designed for quick decision making.</p>
+
+    <div class="services">
+      <div class="service-card">
+        <h4>Express Freight Delivery</h4>
+        <div class="muted">Fast local & national transport.</div>
+      </div>
+
+      <div class="service-card">
+        <h4>Same-Day Free State Delivery</h4>
+        <div class="muted">Perfect for local businesses in Welkom, Bloemfontein & surrounds.</div>
+      </div>
+
+      <div class="service-card">
+        <h4>Bulk & Pallet Transport</h4>
+        <div class="muted">For warehouses, suppliers, and manufacturers.</div>
+      </div>
+
+      <div class="service-card">
+        <h4>Custom Logistics Solutions</h4>
+        <div class="muted">Tailor-made routes, dedicated loads & contract work.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP & WHY -->
+  <section class="two-col">
+    <div class="map-card">
+      <h4 style="margin-top:0; color:var(--deep-blue)">Where We Operate</h4>
+      <p class="muted">Specialist in Free State routes, with national reach on request.</p>
+
+      <!-- Simple stylised SVG map with markers -->
+      <div style="margin-top:14px; border-radius:12px; overflow:hidden; padding:12px; background:white; border:1px solid rgba(10,20,40,0.03)">
+        <svg viewBox="0 0 600 360" width="100%" height="240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="100%" height="100%" fill="#f7fbff"/>
+          <!-- abstract Free State shape -->
+          <path d="M40,80 C100,20 220,10 320,60 C420,110 540,90 560,160 C580,230 480,300 390,320 C310,335 190,330 120,300 C50,270 10,160 40,80Z" fill="#e6f2ff" stroke="#d6e9ff" stroke-width="2"/>
+          <!-- markers -->
+          <!-- Bloemfontein -->
+          <circle cx="310" cy="150" r="8" fill="#0b3a66"/>
+          <text x="330" y="152" font-size="14" font-family="Inter" fill="#0b1720">Bloemfontein</text>
+          <!-- Welkom -->
+          <circle cx="360" cy="110" r="8" fill="#0b3a66"/>
+          <text x="380" y="112" font-size="14" font-family="Inter" fill="#0b1720">Welkom</text>
+          <!-- Kroonstad -->
+          <circle cx="240" cy="140" r="8" fill="#0b3a66"/>
+          <text x="260" y="142" font-size="14" font-family="Inter" fill="#0b1720">Kroonstad</text>
+        </svg>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap">
+        <a class="btn" href="#quote">Get a Quote</a>
+        <a class="btn whatsapp" href="https://wa.me/27730380665" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+
+    <aside class="why-row">
+      <h4 style="margin:0; color:var(--deep-blue)">Why Choose Us</h4>
+      <p class="muted" style="margin:6px 0 14px">Small but professional — personal service with modern systems.</p>
+
+      <div class="icon-row">
+        <div class="icon-box"><div class="icon">✓</div><div><strong>Reliable & on-time</strong><div class="muted" style="font-size:13px">We respect your deadlines.</div></div></div>
+        <div class="icon-box"><div class="icon">💲</div><div><strong>Affordable rates</strong><div class="muted" style="font-size:13px">Competitive pricing for SMEs.</div></div></div>
+        <div class="icon-box"><div class="icon">🚚</div><div><strong>Professional drivers</strong><div class="muted" style="font-size:13px">Trained, insured and courteous.</div></div></div>
+        <div class="icon-box"><div class="icon">🤝</div><div><strong>Personal service</strong><div class="muted" style="font-size:13px">Startup care with enterprise standards.</div></div></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote" style="margin-top:22px">
+    <div class="quote">
+      <h4 style="margin-top:0; color:var(--deep-blue)">Get a Quick Quote</h4>
+      <p class="muted" style="margin:6px 0 12px">Fill this short form — we'll open WhatsApp and email with your details so we can respond quickly.</p>
+
+      <form id="quoteForm" onsubmit="handleQuote(event)">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" required placeholder="Your full name" />
+        </div>
+
+        <div class="field">
+          <label for="company">Company <span class="small">(optional)</span></label>
+          <input id="company" name="company" placeholder="Company name (optional)" />
+        </div>
+
+        <div class="field">
+          <label for="route">Pickup + Dropoff Location</label>
+          <input id="route" name="route" required placeholder="e.g. Welkom → Bloemfontein" />
+        </div>
+
+        <div class="field">
+          <label for="cargo">Cargo type / weight</label>
+          <input id="cargo" name="cargo" required placeholder="e.g. 12 pallets / building materials / 4 tons" />
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center; margin-top:6px;">
+          <button type="submit" class="btn">Send via WhatsApp & Email</button>
+          <button type="button" class="btn ghost" onclick="openWhatsAppQuick()">Quick WhatsApp</button>
+        </div>
+
+        <p class="small" style="margin-top:10px">We will open WhatsApp (073 038 0665) with a prefilled message — you can edit before sending. We will also open your email client so you have a copy sent to bonnydon29@gmail.com.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FLEET -->
+  <section id="fleet" style="margin-top:18px">
+    <h4 style="color:var(--deep-blue)">Fleet</h4>
+    <p class="muted" style="margin:6px 0 12px">Slick white & blue branding — modernised mockups if photos not available.</p>
+
+    <div class="fleet">
+      <div class="fleet-card">
+        <div class="truck-img"><img src="images/truck-8ton.jpg" alt="8-ton truck" style="width:100%; height:100%; object-fit:cover; border-radius:8px" onerror="this.style.display='none'"></div>
+        <div>
+          <div class="truck-type">8-ton</div>
+          <div class="muted">Ideal for large pallet loads & bulk shipments</div>
+        </div>
+      </div>
+
+      <div class="fleet-card">
+        <div class="truck-img"><img src="images/truck-4ton.jpg" alt="4-ton truck" style="width:100%; height:100%; object-fit:cover; border-radius:8px" onerror="this.style.display='none'"></div>
+        <div>
+          <div class="truck-type">4-ton</div>
+          <div class="muted">Medium loads, reliable local runs</div>
+        </div>
+      </div>
+
+      <div class="fleet-card">
+        <div class="truck-img"><img src="images/truck-van.jpg" alt="Van / bakkie" style="width:100%; height:100%; object-fit:cover; border-radius:8px" onerror="this.style.display='none'"></div>
+        <div>
+          <div class="truck-type">Van / Bakkie</div>
+          <div class="muted">Fast same-day deliveries & small consignments</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="margin-top:18px">
+    <h4 style="color:var(--deep-blue)">Client Testimonials</h4>
+    <div class="testimonials">
+      <div class="test-card">“Fast delivery, great communication.” <div class="small" style="margin-top:8px">— Local retailer, Welkom</div></div>
+      <div class="test-card">“Best option for our Free State runs.” <div class="small" style="margin-top:8px">— Manufacturing supplier, Bloemfontein</div></div>
+    </
