@@ -1,0 +1,21 @@
+.product-card {
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+button {
+  padding: 10px 20px;
+  background: #ffd000;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+  width: 250px;
+}

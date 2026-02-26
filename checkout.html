@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="navbar">
+  <h1>Checkout</h1>
+</header>
+
+<div class="section">
+  <form id="checkout-form">
+    <input type="text" placeholder="Full Name" required><br><br>
+    <input type="email" placeholder="Email Address" required><br><br>
+    <input type="text" placeholder="Delivery Address" required><br><br>
+    <button type="submit" class="btn-primary">Complete Order</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("checkout-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  localStorage.removeItem("cart");
+  window.location.href = "order-confirmation.html";
+});
+</script>
+
+</body>
+</html>
